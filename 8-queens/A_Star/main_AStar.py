@@ -41,5 +41,5 @@ else:
 
 end = time.time()
 print("Teste = " + str(teste))
-print("Tentativas = " + (str(tentativas)))
+print("Tentativas gerais do frontier_priority_queue  = " + (str(tentativas)))
 print('Time' + str('%.2f' % (end-start)) + 's')
