@@ -58,4 +58,4 @@ def display_board(seqs):
         for j in i[1:]:
             print(j, ' ', end="")  # With end, print doesn't wrap
         print()  # After outputting one line, wrap it. This cannot be print('\n'), otherwise it will be replaced by two lines
-    print('The number of queens to attack is' + str(attacked_queens_pairs(seqs)))
+    print('The number of queens to attack is ' + str(attacked_queens_pairs(seqs)))

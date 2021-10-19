@@ -1,3 +1,4 @@
+import datetime
 from queue import Queue
 
 
@@ -7,18 +8,25 @@ class Queens_8:
         self.size = size
 
     def solve_bfs(self):
+        nodes = 0
         if self.size < 1:
             return []
         solutions = []
+        problem =[{'nodes': 0, 'solution': [], 'tempo': 0 }]
         queue = Queue()
         queue.put([])
         while not queue.empty():
+            start = datetime.datetime.now()
             solution = queue.get()
+            nodes = nodes + 1
             if self.conflict(solution):
                 continue
             row = len(solution)
             if row == self.size:
-                solutions.append(solution)
+                end = datetime.datetime.now()
+                problem.append({'nodes':nodes, 'solution':solution, 'tempo':(end-start)})
+                solutions.append(problem)
+                nodes = 0
                 continue
             for col in range(self.size):
                 queen = (row, col)
@@ -36,7 +44,7 @@ class Queens_8:
                     return True
         return False
 
-    def print(self, queens):
+    def print(self, queens, nodes, tempo):
         print(' ---' * self.size)
         for i in range(self.size):
             for j in range(self.size):
@@ -44,3 +52,6 @@ class Queens_8:
                 print(' %s ' % p, end='')
             print(' ')
         print(' ---' * self.size)
+        print('nodes: ' + str(nodes))
+        print('tempo: ' + str(tempo)+'ms')
+
