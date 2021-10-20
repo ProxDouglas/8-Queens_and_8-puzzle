@@ -286,17 +286,16 @@ def export(frontier, time):
 
     moves = backtrace()
 
-    file = open('output.txt', 'w')
-    file.write("path_to_goal: " + str(moves))
-    file.write("\ncost_of_path: " + str(len(moves)))
-    file.write("\nnodes_expanded: " + str(nodes_expanded))
-    file.write("\nfringe_size: " + str(len(frontier)))
-    file.write("\nmax_fringe_size: " + str(max_frontier_size))
-    file.write("\nsearch_depth: " + str(goal_node.depth))
-    file.write("\nmax_search_depth: " + str(max_search_depth))
-    file.write("\nrunning_time: " + format(time, '.8f'))
-    file.write("\nmax_ram_usage: " + format(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1000.0, '.8f'))
-    file.close()
+    print("Resultado: ")
+    print("Caminho Objetivo: " + str(moves))
+    print("Custo de passagem: " + str(len(moves)))
+    print("Estados expandidos: " + str(nodes_expanded))
+    print("fringe_size: " + str(len(frontier)))
+    print("max_fringe_size: " + str(max_frontier_size))
+    print("Profundidade de procura: " + str(goal_node.depth))
+    print("Profundidade maxima de procura: " + str(max_search_depth))
+    print("Tempo de processamento: " + format(time, '.8f'))
+    print("Uso de RAM: " + format(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1000.0, '.8f'))
 
 
 def read(configuration):

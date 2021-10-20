@@ -1,4 +1,4 @@
-import datetime
+import timeit
 from queue import Queue
 
 
@@ -16,14 +16,14 @@ class Queens_8:
         queue = Queue()
         queue.put([])
         while not queue.empty():
-            start = datetime.datetime.now()
+            start = timeit.default_timer()
             solution = queue.get()
             nodes = nodes + 1
             if self.conflict(solution):
                 continue
             row = len(solution)
             if row == self.size:
-                end = datetime.datetime.now()
+                end = timeit.default_timer()
                 problem.append({'nodes':nodes, 'solution':solution, 'tempo':(end-start)})
                 solutions.append(problem)
                 nodes = 0
@@ -53,5 +53,5 @@ class Queens_8:
             print(' ')
         print(' ---' * self.size)
         print('nodes: ' + str(nodes))
-        print('tempo: ' + str(tempo)+'ms')
+        print('tempo: ' + str('%.8f' % tempo)+'s')
 

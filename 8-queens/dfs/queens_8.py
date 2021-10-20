@@ -1,37 +1,36 @@
 from queue import Queue
-import datetime
+import timeit
 
 
 class Queens_8:
 
-    def __init__(self, size):
-        self.size = size
+    def __init__(self):
+        self.size = 8
 
-    def solve_dfs(self):
-        if self.size < 1:
-            return []
-        solutions = []
+    def dfs_solucoes(self):
+        solucoes = []
         stack = [[]]
         estados = 0
         problem = [{'solucao': [], 'estados': 0, 'tempo': 0}]
         while stack:
-            start = datetime.datetime.now()
-            solution = stack.pop()
+            start = timeit.default_timer()
             estados = estados + 1
-            if self.conflict(solution):
+
+            solucao = stack.pop()
+            if self.conflict(solucao):
                 continue
-            row = len(solution)
+            row = len(solucao)
             if row == self.size:
-                end = datetime.datetime.now()
-                problem.append({'solucao': solution, 'estados': estados, 'tempo':(end-start)})
-                solutions.append(problem)
+                end = timeit.default_timer()
+                problem.append({'solucao': solucao, 'estados': estados, 'tempo':(end-start)})
+                solucoes.append(problem)
                 continue
             for col in range(self.size):
                 queen = (row, col)
-                queens = solution.copy()
+                queens = solucao.copy()
                 queens.append(queen)
                 stack.append(queens)
-        return solutions
+        return solucoes
 
     def conflict(self, queens):
         for i in range(1, len(queens)):
@@ -50,5 +49,5 @@ class Queens_8:
                 print(' %s ' % p, end='')
             print(' ')
         print(' ---' * self.size)
-        print('nodes: ' + str(nodes))
-        print('tempo: ' + str(tempo) + 'ms')
+        print('Estados: ' + str(nodes))
+        print('Tempo: ' + str('%.8f' % tempo)+'s')

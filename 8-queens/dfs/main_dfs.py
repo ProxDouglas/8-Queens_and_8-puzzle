@@ -4,8 +4,8 @@ from queens_8 import Queens_8
 def main():
     print('.: N-Queens Problem :.')
     size = 8
-    n_queens = Queens_8(size)
-    dfs_solutions = n_queens.solve_dfs()
+    n_queens = Queens_8()
+    dfs_solutions = n_queens.dfs_solucoes()
     for i, j in enumerate(dfs_solutions):
         print('DFS Solution %d:' % (i + 1))
         solucao = dfs_solutions[i].pop(1)
